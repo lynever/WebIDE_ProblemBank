@@ -1,0 +1,17 @@
+
+.problems__by--category{
+    width: 90%;
+    height: 90vh;
+    margin: auto;
+
+    .list__child--category{
+        width: 10%;
+        height: 100%;
+        float: left;
+    }
+    .list__problems{
+        float: right;
+        width: 90%;
+        height: 100%;
+    }
+}
