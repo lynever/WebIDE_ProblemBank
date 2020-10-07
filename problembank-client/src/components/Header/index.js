@@ -8,10 +8,10 @@ import { useSelector } from 'react-redux'
 function Header(props) {
     const user = useSelector(state => state.user);
     const currentPath = window.location.pathname;
-    const handleClickEditor = () => {
-        const api_token = localStorage.getItem("redirect_token");
-        window.open(`http://210.94.194.63:5110?id=${api_token}`, '_bank');
-    }
+    // const handleClickEditor = () => {
+    //     const api_token = localStorage.getItem("redirect_token");
+    //     window.open(`http://210.94.194.63:5110?id=${api_token}`, '_bank');
+    // }
     const addStype = currentPath === '/' ? {
     } : {
         boxShadow: '0 4px 2px -2px rgba(0, 0, 0, 0.2)'
@@ -33,24 +33,24 @@ function Header(props) {
                         <li>
                             <NavLink to="/problemsbank" activeClassName='active_class'>카테고리별 문제</NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink to="" onClick={() => handleClickEditor()} >에디터</NavLink>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                             <NavLink to="/mylist" activeClassName='active_class' >내 문제</NavLink>
-                        </li>
+                        </li> */}
                         {/* <li><NavLink to="/board">게시판</NavLink></li> */}
                         {/* <li><NavLink to="/blog">블로그</NavLink></li> */}
                     </ul>
                 </nav>
-                <div className="header__userInfo">
+                {/* <div className="header__userInfo">
                     {
                         user.userData && user.userData.isAuth ?
                             <>
                                 <h3>{user.userData.data.username}님</h3>
                             </> : "사용자 정보 출력 오류"
                     }
-                </div>
+                </div> */}
             </div>
         </Wrapper>
     )

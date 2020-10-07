@@ -60,9 +60,15 @@ function TotalProblemsPage(props) {
     }
     const setDisplayListProblem = (e) =>{
         const temproblems = [...problems];
+        if(e === "모든"){
+            setResultProblem(temproblems)
+            setCountDisplayProblem(15);
+            return;
+        }
         const filterProblems = temproblems.filter(element => element.level === e);
-        setProblems(filterProblems)
+        setResultProblem(filterProblems)
     }
+
     const blockSearch = keyword ? {display: "block"} : {display: "none"};
     const blockFotter = keyword && resultProblem.length === 0 ? {display: "none"} : {display: "block"};
 
@@ -90,6 +96,7 @@ function TotalProblemsPage(props) {
                                             <p onClick={() => setDisplayListProblem("하")}>하</p>
                                             <p onClick={() => setDisplayListProblem("중")}>중</p>
                                             <p onClick={() => setDisplayListProblem("상")}>상</p>
+                                            <p onClick={() => setDisplayListProblem("모든")}>모든</p>
                                         </div> :
                                     ""
                                 }
@@ -133,7 +140,7 @@ function TotalProblemsPage(props) {
                         }
                         <div className="row-selector" style={blockFotter}>
                             <select class="form-control" onChange={handleChangeDisplayPro} value={countDisplayProblem}>
-                                <option value="20">15</option>
+                                <option value="15">15</option>
                                 <option value="30" selected="">30</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
