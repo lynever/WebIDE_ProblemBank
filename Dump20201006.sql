@@ -15,9 +15,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+use problems;
+
 --
 -- Table structure for table `plass_mylist_problem`
 --
+
 
 DROP TABLE IF EXISTS `plass_mylist_problem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
