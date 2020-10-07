@@ -5,12 +5,10 @@ const problemsBank = {
         const url = '/problems/getcategory';
         return axiosClient.get(url, { params });
     },
-
     getProblemsBankByCategoryID: (params) => {
         const url = '/problems/category';
         return axiosClient.get(url, { params });
     },
-
     getProblemAllData: (params) => {
         const url = '/problems/problemsdata';
         return axiosClient.get(url);

@@ -79,6 +79,7 @@ function DetailProblem(props) {
             setTimeout(timeOutSubmit, 1000);
             
         } catch (error) {
+            setSubmit(false);
             alert("서버오류입니다. 잠시 후 다시 시도해주세요.");
             console.log(error)
         }

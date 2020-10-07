@@ -7,6 +7,7 @@ import ListTag from './ListTag'
 import Loading from 'react-loading'
 import problemsBank from '../../../../apis/problemsBank'
 import ListProjectByCategoryLayout from '../../../../layouts/ListProjectByCategoryLayout'
+import WrapperLoading from '../../../../components/WrapperLoading';
 
 export default class ProblemsByCategory extends Component {
     constructor(props){
@@ -60,24 +61,26 @@ export default class ProblemsByCategory extends Component {
             problems : problems
         })
     }
+
     render() {
         const { detailstutorial, problems, loading} = this.state;
         if(loading)
         {
-            return <Loading /> 
+            return <WrapperLoading /> 
+        }else{
+            const { id } = qs.parse(this.props.location.search);
+            return (
+                <ListProjectByCategoryLayout>
+                    <div className="problems__by--category">
+                        <div className="list__child--category">
+                            <ListTag listtags = {detailstutorial} tutorialId = {id} handleClickTag = {this.handleClickTag} />
+                        </div>
+                        <div className="list__problems">
+                            <ListProblem {...this.props} problems = {problems} handleClickTag = {this.handleClickTag}/>
+                        </div>
+                    </div>
+                </ListProjectByCategoryLayout>
+            )
         }
-        const { id } = qs.parse(this.props.location.search);
-        return (
-            <ListProjectByCategoryLayout>
-                <div className="problems__by--category">
-                    <div className="list__child--category">
-                        <ListTag listtags = {detailstutorial} tutorialId = {id} handleClickTag = {this.handleClickTag} />
-                    </div>
-                    <div className="list__problems">
-                        <ListProblem {...this.props} problems = {problems} handleClickTag = {this.handleClickTag}/>
-                    </div>
-                </div>
-            </ListProjectByCategoryLayout>
-        )
     }
 }

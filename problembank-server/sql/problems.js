@@ -16,6 +16,7 @@ module.exports = {
     checkLikeProblem: "select * from problems.plass_mylist_problem where user_id = ? and problem_id = ?",
     selectTestCaseFromProblemId: "select * from problems.plass_testcases where problem_id = ?",
     selectProblemByCategoryId: "select pbl.* FROM problems.plass_problems as pbl,  problems.plass_problem_category as pc where  pbl.id = pc.problem_id and  pc.category_id = ?",
+    selectTestCaseByProblemId: "select id, input_example as input, output_example as output from  problems.plass_testcases where problem = ?",
 
     // INSERT
     setProblemMyList: "insert into problems.plass_mylist_problem(user_id, problem_id) values (?, ?)",

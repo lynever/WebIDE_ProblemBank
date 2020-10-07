@@ -1,25 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import PropTypes from 'prop-types'
-import { PureComponent } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default class ListTag extends PureComponent {
-    constructor(prop){
-        super(prop);
-    }
-    static propTypes = {
-        prop: PropTypes
-    }
-    render() {
-        const { listtags, handleClickTag, tutorialId } = this.props; 
-        return (
+ListTag.propTypes = {
+    listtags: PropTypes.array,
+    handleClickTag: PropTypes.func
+}
+
+function ListTag(props) {
+    const { listtags, handleClickTag, tutorialId } = props; 
+    const [ activeId, setActiveId ] = useState(0)
+
+    return (
         <Wrapper>
             <ul>
                 {
                     listtags.map((tag, idx) => {
+                        console.log(activeId, idx)
                         return (
-                            <li onClick={() => handleClickTag(tag.id)} >
+                            <li onClick={() => {
+                                setActiveId(idx)
+                                handleClickTag(tag.id)
+                            }} className={Number(activeId) === Number(idx) ? "activeClass" : "list-tag"} >
                                 <Link key={idx} to={`listproblems?id=${tutorialId}`}>{tag.name}</Link>
                             </li>
                         )
@@ -27,9 +30,12 @@ export default class ListTag extends PureComponent {
                 }
             </ul>
         </Wrapper>
-        )
-    }
+    )
 }
+
+
+export default ListTag
+
 const Wrapper = styled.div`
     ul li{
         border-bottom: 1px solid #ccc;
@@ -41,6 +47,7 @@ const Wrapper = styled.div`
                 color: #fff;
             }
         }
+
         a{
             display: block;
             width: 100%;
@@ -52,8 +59,11 @@ const Wrapper = styled.div`
     ul li:first-child{
         margin-top: 0px;
     }
+
+    .activeClass{
+        background: #282828;
+        a {
+            color: #fff;
+        }
+    }
 `
-ListTag.propTypes = {
-    listtags: PropTypes.array,
-    handleClickTag: PropTypes.func
-}

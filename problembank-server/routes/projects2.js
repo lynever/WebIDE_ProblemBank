@@ -9,7 +9,7 @@ var { PROBLEM_START_DELEMETER: startDelem, PROBLEM_END_DELEMETER: endDelem } = p
 
 router.post('/compile', async function(req, res){
     const { sourceCode, problemId, language } = req.body;
-    const [testCases] = await db.query(sql.selectTestCaseByProblemId, [problemId]);
+    const [testCases] = await db.query(sql.problems.selectTestCaseByProblemId, [problemId]);
     let correctCount = 0;
     try {
         const promises = testCases.map(testcase => {

@@ -60,9 +60,8 @@ function TotalProblemsPage(props) {
     }
     const setDisplayListProblem = (e) =>{
         const temproblems = [...problems];
-        if(e === "모든"){
+        if(e === "모두"){
             setResultProblem(temproblems)
-            setCountDisplayProblem(15);
             return;
         }
         const filterProblems = temproblems.filter(element => element.level === e);
@@ -71,7 +70,6 @@ function TotalProblemsPage(props) {
 
     const blockSearch = keyword ? {display: "block"} : {display: "none"};
     const blockFotter = keyword && resultProblem.length === 0 ? {display: "none"} : {display: "block"};
-
 
     const [diffculty, setDiffculty ] = useState(false);
 
@@ -96,7 +94,7 @@ function TotalProblemsPage(props) {
                                             <p onClick={() => setDisplayListProblem("하")}>하</p>
                                             <p onClick={() => setDisplayListProblem("중")}>중</p>
                                             <p onClick={() => setDisplayListProblem("상")}>상</p>
-                                            <p onClick={() => setDisplayListProblem("모든")}>모든</p>
+                                            <p onClick={() => setDisplayListProblem("모두")}>모두</p>
                                         </div> :
                                     ""
                                 }

@@ -1,7 +1,5 @@
 import React, { Component, useState } from 'react'
 import {FaEdit } from 'react-icons/fa';
-// import Search from '../../../../components/Search';
-// import Loading from '../../../../components/Loading';
 import './style.scss'
 import qs from 'query-string'
 import Loading from 'react-loading';
